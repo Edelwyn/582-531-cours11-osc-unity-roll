@@ -33,7 +33,7 @@ void loop() {
   } else {
     myEncoder.setLEDColorLeft( 0, 0, 0 );
   }
-  monOsc.sendInt( "/rota" , valeurEncodeur);
+  monOsc.sendInt( "/rota" , changementEncodeur);
   monOsc.sendInt( "/bouton" , etatBouton);
 }
 }

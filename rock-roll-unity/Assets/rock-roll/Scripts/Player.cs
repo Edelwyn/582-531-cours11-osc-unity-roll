@@ -44,18 +44,19 @@ public class Player : MonoBehaviour
 
         // Récupérer la valeur de l’angle depuis le message OSC
         int value = message.Values[0].IntValue;
+        float input = value / 1000f;
         // EXEMPLE : utiliser la valeur pour appliquer une rotation
         // Adapter proportionnellement la valeur reçue
-        float mouvement = Proportion(value, -50, 50, -50, 50);
+        float mouvement = Proportion(value, -1000, 1000, -1, 1);
         // Roll left/right
-        if (mouvement > 1 )
+        if (mouvement > 1)
         {
-            rb.AddTorque(-torqueForce); // clockwise
+            rb.AddTorque(-input * torqueForce); // clockwise
 
         }
         if (mouvement < 0)
         {
-            rb.AddTorque(torqueForce); // counter-clockwise
+            rb.AddTorque(input * torqueForce); // counter-clockwise
         }
     }
     void TraiterOscBouton(OSCMessage message)
